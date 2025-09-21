@@ -1,0 +1,95 @@
+.welcome-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ecfdf5, #dbeafe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.welcome-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 28rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.welcome-icon {
+  background-color: #dcfce7;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+}
+
+.shield-icon-welcome {
+  width: 2rem;
+  height: 2rem;
+  color: #16a34a;
+}
+
+.welcome-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.welcome-subtitle {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.role-highlight {
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #1f2937;
+}
+
+.user-details {
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+}
+
+.details-title {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-item {
+  font-size: 0.875rem;
+  color: #374151;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .welcome-container {
+    padding: 0.5rem;
+  }
+  
+  .welcome-card {
+    padding: 1.5rem;
+  }
+  
+  .welcome-title {
+    font-size: 1.25rem;
+  }
+}

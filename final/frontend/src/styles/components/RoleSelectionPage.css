@@ -1,0 +1,340 @@
+/* 
+.role-selection-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.role-selection-card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.role-selection-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.role-selection-subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 32px;
+}
+
+.role-options {
+  display: flex;
+  gap: 32px;
+}
+
+.role-option {
+  flex: 1;
+  padding: 32px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.role-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: #007bff;
+}
+
+.role-option h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.role-option p {
+  font-size: 14px;
+  color: #666;
+} */
+
+
+/* Animated background */
+.role-selection-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.role-selection-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  animation: backgroundShift 15s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.02); }
+}
+
+/* Floating shapes */
+.floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 20s infinite linear;
+}
+
+.shape:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape:nth-child(2) {
+  width: 60px;
+  height: 60px;
+  left: 80%;
+  animation-delay: 5s;
+}
+
+.shape:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  left: 50%;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Main card */
+.role-selection-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  animation: cardSlideUp 0.8s ease-out;
+}
+
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typography */
+.role-selection-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1a202c;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.role-selection-subtitle {
+  font-size: 16px;
+  color: #718096;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+/* Role options container */
+.role-options {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+/* Role option cards */
+.role-option {
+  flex: 1;
+  max-width: 350px;
+  padding: 40px 32px;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(145deg, #ffffff, #f7fafc);
+  position: relative;
+  overflow: hidden;
+}
+
+.role-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 14px;
+}
+
+.role-option:hover::before {
+  opacity: 0.05;
+}
+
+.role-option:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(102, 126, 234, 0.2),
+    0 0 0 1px rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.role-option:active {
+  transform: translateY(-4px) scale(0.98);
+}
+
+/* Icon styling */
+.icon-wrapper {
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  color: #4a5568;
+  transition: all 0.3s ease;
+  stroke-width: 1.5;
+}
+
+.role-option:hover .icon {
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+/* Text styling */
+.role-option h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2d3748;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.role-option:hover h2 {
+  color: #667eea;
+}
+
+.role-option p {
+  font-size: 14px;
+  color: #718096;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+/* Selected state */
+.role-option.selected {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-8px) scale(1.02);
+}
+
+.role-option.selected h2,
+.role-option.selected p,
+.role-option.selected .icon {
+  color: white;
+}
+
+.role-option.selected::before {
+  opacity: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .role-options {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .role-selection-card {
+    padding: 30px;
+    margin: 20px;
+  }
+  
+  .role-selection-title {
+    font-size: 28px;
+  }
+  
+  .role-option {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .role-selection-card {
+    padding: 20px;
+  }
+  
+  .role-selection-title {
+    font-size: 24px;
+  }
+  
+  .role-option {
+    padding: 30px 20px;
+  }
+}

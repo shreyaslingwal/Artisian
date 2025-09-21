@@ -1,0 +1,797 @@
+/* VoiceModal.css
+
+.voice-modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4;
+}
+
+.voice-modal {
+  @apply bg-white rounded-xl shadow-2xl max-w-md w-full p-6;
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* Header 
+.modal-header {
+  @apply flex justify-between items-center mb-6;
+}
+
+.modal-title {
+  @apply text-xl font-bold text-gray-800;
+}
+
+.close-button {
+  @apply p-2 hover:bg-gray-100 rounded-full transition-colors;
+}
+
+.close-icon {
+  @apply w-5 h-5 text-gray-500;
+}
+
+/* Language Indicator 
+.language-indicator {
+  @apply mb-4 p-3 bg-blue-50 rounded-lg;
+}
+
+.language-text {
+  @apply text-sm text-blue-700;
+}
+
+/* Microphone Control 
+.microphone-section {
+  @apply text-center mb-6;
+}
+
+.microphone-button {
+  @apply w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 transition-all transform hover:scale-105 active:scale-95 text-white shadow-lg;
+}
+
+.microphone-button.listening {
+  @apply bg-red-500 hover:bg-red-600 animate-pulse;
+}
+
+.microphone-button.not-listening {
+  @apply bg-blue-500 hover:bg-blue-600;
+}
+
+.microphone-icon {
+  @apply w-8 h-8;
+}
+
+.microphone-status {
+  @apply text-sm text-gray-600;
+}
+
+/* Visual Feedback 
+.visual-feedback {
+  @apply flex justify-center mb-4;
+}
+
+.wave-container {
+  @apply flex space-x-1;
+}
+
+.wave-bar {
+  @apply w-2 bg-blue-500 rounded animate-bounce;
+}
+
+.wave-bar:nth-child(1) { 
+  animation-delay: 0s; 
+  height: 10px;
+}
+
+.wave-bar:nth-child(2) { 
+  animation-delay: 0.1s; 
+  height: 15px;
+}
+
+.wave-bar:nth-child(3) { 
+  animation-delay: 0.2s; 
+  height: 20px;
+}
+
+.wave-bar:nth-child(4) { 
+  animation-delay: 0.3s; 
+  height: 12px;
+}
+
+.wave-bar:nth-child(5) { 
+  animation-delay: 0.4s; 
+  height: 18px;
+}
+
+/* Transcript Display 
+.transcript-section {
+  @apply mb-6;
+}
+
+.transcript-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.transcript-container {
+  @apply p-4 border border-gray-300 rounded-lg bg-gray-50 min-h-[100px] max-h-[200px] overflow-y-auto;
+}
+
+.transcript-text {
+  @apply text-gray-800 whitespace-pre-wrap;
+}
+
+.transcript-placeholder {
+  @apply text-gray-400 italic;
+}
+
+/* Error Display 
+.error-section {
+  @apply mb-4 p-3 bg-red-50 border border-red-200 rounded-lg;
+}
+
+.error-message {
+  @apply text-sm text-red-600;
+}
+
+/* Action Buttons 
+.action-buttons {
+  @apply flex space-x-3;
+}
+
+.action-button {
+  @apply py-2 px-4 rounded-lg transition-colors;
+}
+
+.action-button.cancel {
+  @apply flex-1 border border-gray-300 text-gray-700 hover:bg-gray-50;
+}
+
+.action-button.play {
+  @apply border border-gray-300 text-gray-700 hover:bg-gray-50 flex items-center space-x-2;
+}
+
+.action-button.confirm {
+  @apply flex-1 bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.play-icon {
+  @apply w-4 h-4;
+}
+
+/* Tips Section
+.tips-section {
+  @apply mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg;
+}
+
+.tips-text {
+  @apply text-xs text-yellow-800;
+}
+/* Animations 
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Closing animation 
+.voice-modal.closing {
+  animation: slideOutDown 0.3s ease-in;
+}
+
+/* Custom scrollbar for transcript 
+.transcript-container::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.transcript-container::-webkit-scrollbar-track {
+  @apply bg-gray-200 rounded;
+}
+
+.transcript-container::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded hover:bg-gray-500;
+}
+
+/* Focus states 
+.microphone-button:focus {
+  @apply ring-4 ring-blue-300 ring-opacity-50 outline-none;
+}
+
+.action-button:focus {
+  @apply ring-2 ring-blue-500 ring-opacity-50 outline-none;
+}
+
+.close-button:focus {
+  @apply ring-2 ring-gray-300 ring-opacity-50 outline-none;
+}
+
+/* Responsive Design 
+@media (max-width: 640px) {
+  .voice-modal {
+    @apply max-w-sm p-4;
+  }
+  
+  .modal-title {
+    @apply text-lg;
+  }
+  
+  .microphone-button {
+    @apply w-16 h-16;
+  }
+  
+  .microphone-icon {
+    @apply w-6 h-6;
+  }
+  
+  .action-buttons {
+    @apply flex-col space-x-0 space-y-2;
+  }
+  
+  .action-button.play {
+    @apply justify-center;
+  }
+}
+
+/* High contrast mode support 
+@media (prefers-contrast: high) {
+  .microphone-button.listening {
+    @apply border-2 border-red-700;
+  }
+  
+  .microphone-button.not-listening {
+    @apply border-2 border-blue-700;
+  }
+  
+  .transcript-container {
+    @apply border-2 border-gray-400;
+  }
+}
+
+/* Reduced motion support 
+@media (prefers-reduced-motion: reduce) {
+  .voice-modal {
+    animation: none;
+  }
+  
+  .microphone-button.listening {
+    @apply animate-none;
+  }
+  
+  .wave-bar {
+    @apply animate-none;
+  }
+  
+  .microphone-button {
+    @apply transform-none hover:scale-100;
+  }
+}
+
+/* Dark mode support 
+@media (prefers-color-scheme: dark) {
+  .voice-modal {
+    @apply bg-gray-800 text-white;
+  }
+  
+  .modal-title {
+    @apply text-white;
+  }
+  
+  .close-icon {
+    @apply text-gray-300;
+  }
+  
+  .language-indicator {
+    @apply bg-blue-900;
+  }
+  
+  .language-text {
+    @apply text-blue-300;
+  }
+  
+  .transcript-container {
+    @apply bg-gray-700 border-gray-600;
+  }
+  
+  .transcript-text {
+    @apply text-white;
+  }
+  
+  .transcript-placeholder {
+    @apply text-gray-400;
+  }
+  
+  .action-button.cancel {
+    @apply border-gray-600 text-gray-300 hover:bg-gray-700;
+  }
+  
+  .action-button.play {
+    @apply border-gray-600 text-gray-300 hover:bg-gray-700;
+  }
+  
+  .tips-section {
+    @apply bg-yellow-900 border-yellow-700;
+  }
+  
+  .tips-text {
+    @apply text-yellow-300;
+  }
+} */
+
+
+/* VoiceModal.css */
+
+/* Main Container */
+.voice-modal-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating Background Orbs */
+.modal-orbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.modal-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  animation: modalFloat 8s ease-in-out infinite;
+}
+
+.modal-orb-1 {
+  width: 150px;
+  height: 150px;
+  top: 15%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.modal-orb-2 {
+  width: 100px;
+  height: 100px;
+  top: 70%;
+  right: -3%;
+  animation-delay: 3s;
+}
+
+.modal-orb-3 {
+  width: 80px;
+  height: 80px;
+  top: 40%;
+  right: 15%;
+  animation-delay: 6s;
+}
+
+@keyframes modalFloat {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-15px) translateX(8px); }
+  66% { transform: translateY(8px) translateX(-12px); }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  max-width: 28rem;
+  width: 100%;
+  padding: 2rem;
+  animation: modalSlideUp 0.4s ease-out;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.close-button {
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Language Indicator */
+.language-indicator {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 10px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.language-text {
+  font-size: 0.875rem;
+  color: rgba(147, 197, 253, 1);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Microphone Section */
+.microphone-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.microphone-button {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(147, 51, 234, 0.8);
+  color: white;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+}
+
+.microphone-button.listening {
+  background: rgba(239, 68, 68, 0.8);
+  animation: microphonePulse 1.5s infinite;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.microphone-button:hover {
+  transform: scale(1.05);
+}
+
+.microphone-button:active {
+  transform: scale(0.95);
+}
+
+.microphone-button:focus {
+  outline: none;
+  ring: 4px solid rgba(147, 51, 234, 0.5);
+}
+
+.mic-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.microphone-status {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+@keyframes microphonePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Visual Feedback */
+.visual-feedback {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.wave-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.wave-bar {
+  width: 0.5rem;
+  background: rgba(147, 51, 234, 0.8);
+  border-radius: 4px;
+  animation: waveAnimation 1.4s ease-in-out infinite both;
+}
+
+.wave-bar-1 { height: 1rem; animation-delay: -0.4s; }
+.wave-bar-2 { height: 1.5rem; animation-delay: -0.3s; }
+.wave-bar-3 { height: 2rem; animation-delay: -0.2s; }
+.wave-bar-4 { height: 1.25rem; animation-delay: -0.1s; }
+.wave-bar-5 { height: 1.75rem; animation-delay: 0s; }
+
+@keyframes waveAnimation {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+}
+
+/* Transcript Section */
+.transcript-section {
+  margin-bottom: 1.5rem;
+}
+
+.transcript-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.transcript-container {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  min-height: 6rem;
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+.transcript-text {
+  color: white;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.transcript-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Custom Scrollbar */
+.transcript-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.transcript-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.transcript-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.transcript-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.action-button {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.action-button.cancel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.action-button.cancel:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.action-button.play {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.action-button.play:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.action-button.confirm {
+  flex: 1;
+  background: rgba(59, 130, 246, 0.8);
+  color: white;
+}
+
+.action-button.confirm:hover {
+  background: rgba(59, 130, 246, 0.9);
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-button:disabled:hover {
+  background: rgba(59, 130, 246, 0.8);
+}
+
+.action-button:focus {
+  outline: none;
+  ring: 2px solid rgba(147, 51, 234, 0.5);
+}
+
+.play-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Tips Section */
+.tips-section {
+  padding: 0.75rem;
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.tips-text {
+  font-size: 0.75rem;
+  color: rgba(254, 215, 170, 1);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Demo Status */
+.demo-status {
+  text-align: center;
+}
+
+.status-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .modal-card {
+    max-width: 20rem;
+    padding: 1.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1.125rem;
+  }
+  
+  .microphone-button {
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  .mic-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-button.play {
+    justify-content: center;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .modal-card {
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .action-button.cancel,
+  .action-button.play {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+  }
+  
+  .microphone-button.listening {
+    border: 2px solid #ef4444;
+  }
+  
+  .microphone-button:not(.listening) {
+    border: 2px solid #9333ea;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .modal-orb {
+    animation: none;
+  }
+  
+  .microphone-button.listening {
+    animation: none;
+  }
+  
+  .wave-bar {
+    animation: none;
+  }
+  
+  .microphone-button:hover {
+    transform: none;
+  }
+  
+  .modal-card {
+    animation: none;
+  }
+}

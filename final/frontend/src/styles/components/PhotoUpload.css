@@ -1,0 +1,525 @@
+/* Photo upload area
+.photo-upload-area {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.photo-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 3px dashed rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.photo-circle:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.photo-circle.has-photo {
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border-width: 2px;
+}
+
+.photo-circle.has-photo:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  gap: 12px;
+}
+
+.photo-placeholder svg {
+  width: 40px;
+  height: 40px;
+  fill: rgba(255, 255, 255, 0.6);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.photo-placeholder span {
+  font-size: 15px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.upload-btn-container {
+  cursor: pointer;
+}
+
+.upload-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 14px 24px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.upload-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.upload-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.upload-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.remove-photo {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: rgba(239, 68, 68, 0.9);
+  border: 3px solid white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.remove-photo:hover {
+  background: rgba(220, 38, 38, 1);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.remove-photo svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Responsive design 
+@media (max-width: 768px) {
+  .photo-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .photo-placeholder svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .photo-placeholder span {
+    font-size: 14px;
+  }
+  
+  .upload-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  .photo-container {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .photo-placeholder svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .photo-placeholder span {
+    font-size: 13px;
+  }
+  
+  .upload-btn {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+  
+  .photo-container {
+    gap: 20px;
+  }
+  
+  .remove-photo {
+    width: 28px;
+    height: 28px;
+    top: -6px;
+    right: -6px;
+  }
+  
+  .remove-photo svg {
+    width: 12px;
+    height: 12px;
+  }
+} */
+
+
+/* src/styles/components/PhotoUpload.css */
+
+.photo-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.photo-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Photo Circle */
+.photo-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px dashed rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.photo-circle:hover:not(.has-photo) {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.02);
+}
+
+.photo-circle.has-photo {
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  background: none;
+  cursor: default;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.photo-circle.drag-over {
+  border-color: #4CAF50;
+  background: rgba(76, 175, 80, 0.1);
+  transform: scale(1.05);
+}
+
+.photo-circle.loading {
+  border-color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Photo Placeholder */
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  pointer-events: none;
+}
+
+.upload-text {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.upload-subtext {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Drag Overlay */
+.drag-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(76, 175, 80, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-weight: 500;
+  z-index: 2;
+}
+
+.drag-overlay span {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Remove Photo Button */
+.remove-photo {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 28px;
+  height: 28px;
+  background: #ff4757;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.remove-photo:hover:not(:disabled) {
+  background: #ff3838;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+}
+
+.remove-photo:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Upload Button */
+.upload-btn-container {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+}
+
+.upload-btn-container:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.upload-btn-container:active:not(.disabled) {
+  transform: translateY(-1px);
+}
+
+.upload-btn-container.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Error Message */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff4757;
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-top: 12px;
+  font-size: 13px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.error-message span {
+  font-weight: 500;
+}
+
+/* Help Text */
+.upload-help-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.upload-help-text span {
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .photo-upload-area {
+    padding: 16px;
+  }
+
+  .photo-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .upload-btn-container {
+    padding: 12px 20px;
+    margin-top: 16px;
+  }
+  
+  .upload-btn {
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .upload-text {
+    font-size: 13px;
+  }
+
+  .upload-subtext {
+    font-size: 11px;
+  }
+
+  .remove-photo {
+    width: 24px;
+    height: 24px;
+    top: 2px;
+    right: 2px;
+  }
+}
+
+@media (max-width: 320px) {
+  .photo-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .upload-btn-container {
+    padding: 10px 16px;
+  }
+}
